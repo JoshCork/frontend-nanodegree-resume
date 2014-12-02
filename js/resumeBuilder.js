@@ -8,7 +8,7 @@ var bio = {
         "gitHub": "@joshcork",
         "location": "Gilbert, AZ",
     },
-    "pictureURL": "http://photos-b.ak.instagram.com/hphotos-ak-xfa1/10632278_743885619011617_1494692464_n.jpg",
+    "pictureURL": "images/bioPic.jpg",
     "welcomeMessage": "Hello, and welcome to my world.",
     "skills": ["Business Intelligence", "Analytics", "Handsomeness", "Interpersonal Communication"]
 };
@@ -86,11 +86,21 @@ var projects = {
 };
 
 
+ if (bio.skills.length > 0) {
+	$("#header").append(HTMLskillsStart);
+	for (i in bio.skills) {
+		var myHTMLskills = HTMLskills.replace("%data%", bio.skills[i])
+		$("#header").append(myHTMLskills)	
+	}
+} else {
+	// do nothing.
+};
+
 
 HTMLheaderName = HTMLheaderName.replace("%data%", bio.name);
 HTMLheaderRole = HTMLheaderRole.replace('%data%', bio.role);
 
-HTMLskills = HTMLskills.replace("%data%", bio.skills.join(", "));
+//HTMLskills = HTMLskills.replace("%data%", bio.skills.join(", "));
 HTMLemail = HTMLemail.replace('%data%', bio.contactInfo.email);
 HTMLbioPic = HTMLbioPic.replace("%data%", bio.pictureURL);
 HTMLWelcomeMsg = HTMLWelcomeMsg.replace('%data%', bio.welcomeMessage);
@@ -103,6 +113,6 @@ $("#header").prepend(HTMLheaderName);
 
 $("#header").append(HTMLbioPic);
 $("#header").append(HTMLemail);
-$("#header").append(HTMLskills);
+//$("#header").append(HTMLskills);
 $("#header").append(HTMLworkDescription);
 $("#header").append(HTMLschoolName);
