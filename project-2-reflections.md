@@ -1,5 +1,83 @@
 project 2 reflections
 
+## 12/1/2014 - Loose Equality - important to remember
+
+	Strict equality (===) vs Loose equality (==)
+
+	When you use three equal signs, ===, no type conversion is done prior to the comparison. If the values are different types, for example, a String and a Number, they can't ever be equal. To return true, the values must be equal and the types must be the same.
+
+	Loose equality, ==, checks to see if the two values are the same type and if not, converts to a common type before the conversion. If the types are already the same, there is no difference between the result of === and ==. When they aren't it can cause unexpected results.
+
+	Check the link to an article on Mozilla Developer Network to see what values get converted into what.
+
+	According to Jacques Favreau, the lead front-end engineer at Udacity, you should never use ==. It's a frequent source of bugs. In fact, if a Udacity engineer tries to commit code with ==, it automatically gets rejected.
+
+	Though it wasn't mentioned in the video, the same conditions apply for strict inequality (!==) and loose inequality (!=). Loose inequality is more forgiving than loose equality so you might not see strict inequality as often.
+
+## 12/1/2014 - working from a plane.  
+Copying and pasting my code here as I'm having trouble with my connection on the shuttle on my way to Oregon.  
+
+	var weirdObject = {
+    "property": "Time for an astronomy lesson!",
+    "property1": "Cameron's minor in college was astronomy",
+    "property-2": "The 4 Galilean largest moons of Jupiter are:",
+    "property 3": "Io, Ganymede, Callisto, Europa",
+    "property$": "Saturn's moon Enceladus has liquid water ocean under its icy surface",
+    " property": "The Sun contains 99.87% of the mass of the entire solar system",
+    "property()": "There are 5 dwarf planets in our solar system:",
+    "property[]": "Pluto, Ceres, Eris, Haumea, Makemake",
+    "8property": "Mars has two tiny moons: Phobos and Deimos"
+	};
+
+	// Use console.log() to figure out if dot and/or bracket notation
+	// will work to access the properties below. Mark true if you can use dot/bracket
+	// notation to access the property, otherwise mark false.
+
+	// For example, uncomment the line below to see if you can use dot notation to access `property1`.
+	// console.log(weirdObject.property1);
+
+	console.log(weirdObject.property);
+	console.log([weirdObject](property));
+
+	// I'll give you the first answer. The rest are set to false. Try out each property and
+	// if you can use dot or bracket notation to access it, change the answer to true!
+
+	// property
+	var dotNotation0 = true;
+	var bracketNotation0 = true;
+
+	// property1
+	var dotNotation1 = true;
+	var bracketNotation1 = true;
+
+	// property-2
+	var dotNotation2 = false;
+	var bracketNotation2 = true;
+
+	// property 3
+	var dotNotation3 = false;
+	var bracketNotation3 = true;
+
+	// property$
+	var dotNotation4 = true;
+	var bracketNotation4 = true;
+
+	// *space*property
+	var dotNotation5 = false;
+	var bracketNotation5 = true;
+
+	// property()
+	var dotNotation6 = false;
+	var bracketNotation6 = true;
+
+	// property[]
+	var dotNotation7 = false;
+	var bracketNotation7 = true;
+
+	// 8property
+	var dotNotation8 = false;
+	var bracketNotation8 = true;
+
 ## 11/28/2014 - buliding out my objects
 Build my objects out in resumeBuilder.js.  Not feeling well today.  Yesterday was thanksgiving and half way through the day came down with a bad sore throat.  Feel kinda terrible today.  calling it a day for now. 
 
