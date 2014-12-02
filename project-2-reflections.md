@@ -1,5 +1,8 @@
 project 2 reflections
 
+## 11/28/2014 - buliding out my objects
+Build my objects out in resumeBuilder.js.  Not feeling well today.  Yesterday was thanksgiving and half way through the day came down with a bad sore throat.  Feel kinda terrible today.  calling it a day for now. 
+
 ## 11/26/2014 - string manipulation.  
 Not sure if this is the most efficient way of doing this but created an array and filled it with words using the split function to split the original string based on spaces.  Then I assumed only two word names and made the first proper case using the slice trick and the last all uppercase using the uppercase function.  I used plunker and imported jQuery to push the HTML out to the browser where I could test and see my changes.  Here's my code: 
 
