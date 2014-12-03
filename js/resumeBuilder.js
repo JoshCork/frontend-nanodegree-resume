@@ -96,6 +96,16 @@ var projects = {
 	// do nothing.
 };
 
+if (work.jobs.length > 0) {
+    for(i in work.jobs) {
+        $("#workExperience").append(HTMLworkStart);
+        var myEmployer = HTMLworkEmployer.replace('%data%', work.jobs[i].employer);
+        var myTitle = HTMLworkTitle.replace('%data%',work.jobs[i].title);
+        var myWorkExperience = myEmployer + myTitle;
+        $(".work-entry:last").append(myWorkExperience);
+    }
+}
+
 
 HTMLheaderName = HTMLheaderName.replace("%data%", bio.name);
 HTMLheaderRole = HTMLheaderRole.replace('%data%', bio.role);
