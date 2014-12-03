@@ -85,46 +85,47 @@ var projects = {
     }]
 };
 
+myName = HTMLheaderName.replace("%data%", bio.name);
+myRole = HTMLheaderRole.replace('%data%', bio.role);
+myEmail = HTMLemail.replace('%data%', bio.contactInfo.email);
+myPic = HTMLbioPic.replace("%data%", bio.pictureURL);
+myWelcome = HTMLWelcomeMsg.replace('%data%', bio.welcomeMessage);
 
- if (bio.skills.length > 0) {
-	$("#header").append(HTMLskillsStart);
-	for (i in bio.skills) {
-		var myHTMLskills = HTMLskills.replace("%data%", bio.skills[i])
-		$("#header").append(myHTMLskills)	
-	}
+$("#header").prepend(myWelcome);
+$("#header").prepend(myRole);
+$("#header:last").prepend(myName);
+
+$("#header:last").append(myPic);
+
+if (bio.skills.length > 0) {
+    $("#header").append(HTMLskillsStart);
+    // for (skill in bio.skills) {
+    var mySkills = bio.skills.join(' / ')
+    var myFormattedSkills = '<div class=\'white-text\'>' + mySkills + '</div>'
+        // HTMLskills.replace("%data%", bio.skills[skill]);
+    $("#skills:last").append(myFormattedSkills);
+
+    // }
 } else {
-	// do nothing.
+    // do nothing.
 };
 
 
-if (work.jobs.length > 0) {
-    for(i in work.jobs) {
-        $("#workExperience").append(HTMLworkStart);
-        var myEmployer = HTMLworkEmployer.replace('%data%', work.jobs[i].employer);
-        var myTitle = HTMLworkTitle.replace('%data%',work.jobs[i].title);
-        var myWorkExperience = myEmployer + myTitle;
-        $(".work-entry:last").append(myWorkExperience);
+function displayWork() {
+    if (work.jobs.length > 0) {
+        for (job in work.jobs) {
+            $("#workExperience").append(HTMLworkStart);
+            var myEmployer = HTMLworkEmployer.replace('%data%', work.jobs[job].employer);
+            var myTitle = HTMLworkTitle.replace('%data%', work.jobs[job].title);
+            var myWorkExperience = myEmployer + myTitle;
+            var myWorkDates = HTMLworkDates.replace('%data%', work.jobs[job].datesWorked);
+            var myWorkDescripton = HTMLworkDescription.replace('%data%', work.jobs[job].description);
+            $(".work-entry:last").append(myWorkExperience);
+            $(".work-entry:last").append(myWorkDates);
+            $(".work-entry:last").append(myWorkDescripton);
+        }
     }
+
 }
 
-
-
-HTMLheaderName = HTMLheaderName.replace("%data%", bio.name);
-HTMLheaderRole = HTMLheaderRole.replace('%data%', bio.role);
-
-//HTMLskills = HTMLskills.replace("%data%", bio.skills.join(", "));
-HTMLemail = HTMLemail.replace('%data%', bio.contactInfo.email);
-HTMLbioPic = HTMLbioPic.replace("%data%", bio.pictureURL);
-HTMLWelcomeMsg = HTMLWelcomeMsg.replace('%data%', bio.welcomeMessage);
-HTMLworkDescription = HTMLworkDescription.replace('%data%', work.currentPosition);
-HTMLschoolName = HTMLschoolName.replace('%data%', education.lastSchool);
-
-$("#header").prepend(HTMLWelcomeMsg);
-$("#header").prepend(HTMLheaderRole);
-$("#header").prepend(HTMLheaderName);
-
-$("#header").append(HTMLbioPic);
-$("#header").append(HTMLemail);
-//$("#header").append(HTMLskills);
-$("#header").append(HTMLworkDescription);
-$("#header").append(HTMLschoolName);
+displayWork();
