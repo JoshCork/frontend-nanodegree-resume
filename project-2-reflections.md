@@ -1,5 +1,26 @@
 project 2 reflections
 
+## 12/3/2014 - Locationizer Review
+Here's the solution I wrote:
+	function locationizer(work_obj) {
+	    var myWorkObj = work_obj;
+	    var myLocations = [];
+	    
+	    for (var job in myWorkObj.jobs) {
+	            myLocations.push(myWorkObj.jobs[job].location);
+	    }
+	    
+	    return myLocations;
+	}
+Question: Camron does it by create a 'newLocation' variable and assigning the value of the object he is iterating over to this variable and then pushing that onto the array.  In my solution I did this all at once w/out the 'newLocation' variable.  Is there a reason (performance, security, etc... that Camron did this)?
+	var locationArray = [];
+	for (job in work_obj.jobs) {
+		var newLocation = work_obj.jobs[job].location;
+		locationArray.push(newLocation);
+	}
+
+	return locationArray;
+
 ## 12/1/2014 - Loose Equality - important to remember
 
 	Strict equality (===) vs Loose equality (==)
