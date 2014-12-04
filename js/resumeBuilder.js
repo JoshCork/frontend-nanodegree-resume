@@ -97,6 +97,8 @@ $("#header:last").prepend(myName);
 
 $("#header:last").append(myPic);
 
+$("#main").append(internationalizeButton);
+
 if (bio.skills.length > 0) {
     $("#header").append(HTMLskillsStart);
     // for (skill in bio.skills) {
@@ -128,4 +130,22 @@ function displayWork() {
 
 }
 
+function inName(fullName) {
+	if (fullName.length > 0) {
+
+		var myNameArray = fullName.split(" ");
+		var fName = myNameArray[0];
+		var lName = myNameArray[1];
+
+		var inName = fName + " " + lName.toUpperCase();
+		
+	} else {
+
+		var inName = "invalid NAME";
+	
+	}
+	return inName;
+}
+
 displayWork();
+console.log(inName(bio.name));
