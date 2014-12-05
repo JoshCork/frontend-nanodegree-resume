@@ -71,7 +71,7 @@ var education = {
     }]
 };
 
-var projects = {
+var project = {
     "projects": [{
         "title": "The Sale Ring (eSaleRing.com)",
         "datesWorked": "October 2014",
@@ -90,6 +90,25 @@ myRole = HTMLheaderRole.replace('%data%', bio.role);
 myEmail = HTMLemail.replace('%data%', bio.contactInfo.email);
 myPic = HTMLbioPic.replace("%data%", bio.pictureURL);
 myWelcome = HTMLWelcomeMsg.replace('%data%', bio.welcomeMessage);
+
+project.display = function() {
+    // should .append() all of my project's information to the projects section.
+    // start each new project with a HTMLprojectStart helper.
+
+    for (proj in project.projects) {
+        $("#projects").append(HTMLprojectStart);
+        var myProjectTitle = project.projects[proj].title;
+        var myProjectDate  = project.projects[proj].datesWorked;
+        var myProjHead = myProjectTitle + " - " + myProjectDate
+        var myProjDescription = project.projects[proj].description;
+        var myProjImage  = project.projects[proj].images[0];
+
+        $(".project-entry:last").append(myProjHead); 
+        $(".project-entry:last").append(myProjDescription);
+        $(".project-entry:last").append(myProjImage);
+    };
+
+};
 
 $("#header").prepend(myWelcome);
 $("#header").prepend(myRole);
@@ -131,12 +150,14 @@ function displayWork() {
 }
 
 function inName(fullName) {
-	if (fullName.length > 0) {
+	
+    if (fullName.length > 0) {
 
 		var myNameArray = fullName.split(" ");
 		var fName = myNameArray[0];
 		var lName = myNameArray[1];
 
+        fName = fName.slice(0,1).toUpperCase() + fName.slice(1).toLowerCase();
 		var inName = fName + " " + lName.toUpperCase();
 		
 	} else {
@@ -148,4 +169,5 @@ function inName(fullName) {
 }
 
 displayWork();
+project.display();
 console.log(inName(bio.name));
