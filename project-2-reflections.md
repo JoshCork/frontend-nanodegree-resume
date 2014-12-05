@@ -1,5 +1,8 @@
 project 2 reflections
 
+## 12/5/2014 - wrapping up the javascript basics course
+Had a great time doing this course.  I probably spent way to much time going through the end of class project when I should have been moving on to the jQuery class so I could actually work on the deliverable for project two... but I was just having way to much fun!  
+
 ## 12/3/2014 - Locationizer Review
 Here's the solution I wrote:
 	function locationizer(work_obj) {
