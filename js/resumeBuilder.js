@@ -76,12 +76,12 @@ var project = {
         "title": "The Sale Ring (eSaleRing.com)",
         "datesWorked": "October 2014",
         "description": "Created a landing page for The Sale Ring digial magazine.",
-        "images": ["URL of PROJECT IMAGES"]
+        "images": ["images/ProjOne1.png", "images/ProjOne2.png"]
     }, {
         "title": "GESDATE Landing Page (GESDATE.com)",
         "datesWorked": "August 2014",
         "description": "Created a landing page for a startup GESDATE.",
-        "images": ["URL of PROJECT IMAGES"]
+        "images": ["images/ProjTwo1.png", "images/ProjTwo2.png", "images/ProjTwo3-JDHANCOCK.png"]
     }]
 };
 
@@ -91,24 +91,6 @@ myEmail = HTMLemail.replace('%data%', bio.contactInfo.email);
 myPic = HTMLbioPic.replace("%data%", bio.pictureURL);
 myWelcome = HTMLWelcomeMsg.replace('%data%', bio.welcomeMessage);
 
-project.display = function() {
-    // should .append() all of my project's information to the projects section.
-    // start each new project with a HTMLprojectStart helper.
-
-    for (proj in project.projects) {
-        $("#projects").append(HTMLprojectStart);
-        var myProjectTitle = project.projects[proj].title;
-        var myProjectDate  = project.projects[proj].datesWorked;
-        var myProjHead = myProjectTitle + " - " + myProjectDate
-        var myProjDescription = project.projects[proj].description;
-        var myProjImage  = project.projects[proj].images[0];
-
-        $(".project-entry:last").append(myProjHead); 
-        $(".project-entry:last").append(myProjDescription);
-        $(".project-entry:last").append(myProjImage);
-    };
-
-};
 
 $("#header").prepend(myWelcome);
 $("#header").prepend(myRole);
@@ -129,6 +111,32 @@ if (bio.skills.length > 0) {
     // }
 } else {
     // do nothing.
+};
+
+project.display = function() {
+    // should .append() all of my project's information to the projects section.
+    // start each new project with a HTMLprojectStart helper.
+
+    for (proj in project.projects) {
+        $("#projects").append(HTMLprojectStart);
+        var myProjectTitle = HTMLprojectTitle.replace('%data%',project.projects[proj].title);
+        var myProjectDate  = HTMLprojectDates.replace('%data%',project.projects[proj].datesWorked);        
+        var myProjDescription = HTMLprojectDescription.replace('%data%',project.projects[proj].description);
+        
+
+        $(".project-entry:last").append(myProjectTitle); 
+        $(".project-entry:last").append(myProjectDate); 
+        $(".project-entry:last").append(myProjDescription);
+        
+        if (project.projects[proj].images.length > 0) {
+        	for (pic in project.projects[proj].images) {
+        		var myProjImage  = HTMLprojectImage.replace('%data%',project.projects[proj].images[pic]);		
+        		$(".project-entry:last").append(myProjImage);
+        	};
+        };
+        
+    };
+
 };
 
 
@@ -171,3 +179,5 @@ function inName(fullName) {
 displayWork();
 project.display();
 console.log(inName(bio.name));
+
+$("#mapDiv").append(googleMap);
