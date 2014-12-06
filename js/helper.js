@@ -155,7 +155,7 @@ function initializeMap() {
     // The next lines save location data from the search result object to local variables
     var lat = placeData.geometry.location.k;  // latitude from the place service
     var lon = placeData.geometry.location.B;  // longitude from the place service
-    var name = placeData.formatted_address;   // name of the place from the place service
+    var name = '<h1>' + placeData.formatted_address + '</h1>';   // name of the place from the place service
     var bounds = window.mapBounds;            // current boundaries of the map window
 
     // marker is an object with additional data about the pin for a single location
@@ -174,7 +174,8 @@ function initializeMap() {
 
     // hmmmm, I wonder what this is about...
     google.maps.event.addListener(marker, 'click', function() {
-      // your code goes here!
+      // your code goes here!      
+      infoWindow.open(map,marker);
     });
 
     // this is where the pin actually gets added to the map.
